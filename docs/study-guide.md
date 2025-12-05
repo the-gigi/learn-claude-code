@@ -53,7 +53,19 @@ Here is a lightweight study guide you can drop into a markdown file (e.g., `clau
 
 ***
 
-## Track 6 – Advanced Features & Customization
+## Track 6 – Army of Claudes
+
+- [ ] Set up parallel Claude Code sessions with Git Worktrees using [tree-me](https://haacked.com/archive/2025/11/21/tree-me/) bash wrapper.
+- [ ] Run Claude Code in isolated Docker containers with [ClaudeBox](https://github.com/RchGrav/claudebox) for multi-instance support.
+- [ ] Use [Claude Code on the Web](https://docs.claude.com/en/docs/claude-code/claude-code-on-the-web) to run multiple coding tasks in parallel via browser.
+- [ ] Install [CCManager](https://github.com/kbwo/ccmanager) to monitor and switch between multiple AI coding sessions with real-time status indicators.
+- [ ] Try [Claude Squad](https://github.com/smtg-ai/claude-squad) for tmux-based orchestration of multiple AI agents with background task execution.
+- [ ] Explore [agenttools/worktree](https://github.com/agenttools/worktree) for GitHub issue integration with multi-worker Claude coordination.
+- [ ] Explore [Claude 007 Agents](https://github.com/avivl/claude-007-agents) orchestration system with 14 categories of specialized agents.
+
+***
+
+## Track 7 – Advanced Features & Customization
 
 - [ ] Read [Plugins - Claude Code Docs](https://code.claude.com/docs/en/plugins) and install at least one plugin to extend Claude Code's capabilities.
 - [ ] Study [Hooks Guide - Claude Code Docs](https://code.claude.com/docs/en/hooks-guide) and create a startup hook for your workflow (e.g., auto-run tests, set environment).
