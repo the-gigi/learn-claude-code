@@ -1,3 +1,4 @@
+
 # CLAUDE.md Files
 
 ## Overview
@@ -10,13 +11,30 @@ Claude Code automatically discovers and loads CLAUDE.md files in this hierarchy:
 
 1. `~/.claude/CLAUDE.md` - Global settings for all projects
 2. Project root `CLAUDE.md` - Project-wide instructions
-3. Project root `CLAUDE.local.md` - Personal project settings (add to .gitignore)
+3. Project root `CLAUDE.local.md` - ⚠️ **Superseded by imports** (see below)
 4. Subdirectory `CLAUDE.md` files - Directory-specific instructions
-5. Subdirectory `CLAUDE.local.md` files - Personal directory settings (add to .gitignore)
+5. Subdirectory `CLAUDE.local.md` files - ⚠️ **Superseded by imports** (see below)
 
-Both `CLAUDE.md` and `CLAUDE.local.md` work at any level (root or subdirectory). The `.local.md` variant is for personal settings you don't want to commit.
+**How files are combined:**
+Claude Code combines all CLAUDE.md files from your current directory and parent directories up to the home directory, automatically adding them to the prompt. When working with files in subdirectories, any CLAUDE.md files in those subdirectories are also pulled into the context.
 
-All discovered files are combined into Claude's context when working in that directory.
+### CLAUDE.local.md → Imports Migration
+
+**`CLAUDE.local.md` files still work but are no longer recommended.** Use `@` imports instead for better git worktree compatibility.
+
+**Problem with CLAUDE.local.md:**
+- Git worktrees DON'T copy `.local.md` files (they're gitignored), so you must manually recreate them in each worktree
+- When running parallel Claude Code sessions across worktrees, maintaining identical personal settings becomes tedious
+
+**Recommended approach:**
+```markdown
+# In your project's CLAUDE.md
+@~/.claude/the-project/CLAUDE.md
+```
+
+This keeps personal settings in your home directory, making them work seamlessly across all git worktrees.
+
+[Official documentation on imports](https://code.claude.com/docs/en/memory#claude-md-imports) | [Git worktrees workflow](https://code.claude.com/docs/en/common-workflows#run-parallel-claude-code-sessions-with-git-worktrees)
 
 ## Best Practices
 
@@ -95,7 +113,7 @@ This adds temporary context without editing CLAUDE.md.
 
 **project/CLAUDE.md** (project):
 ```markdown
-# MyApp Project
+# The App Project
 Web application using React + FastAPI.
 
 # Commands
@@ -104,17 +122,21 @@ Web application using React + FastAPI.
 - Lint: `npm run lint && ruff check .`
 
 # Architecture
-- Frontend: src/components/
 - Backend: api/
+- Web Frontend: src/components/
+- Console Frontend: cli/
 - Shared types: types/
+
+# Personal Preferences
+@~/.claude/projects/the-app/CLAUDE.md
 ```
 
-**project/CLAUDE.local.md** (personal, gitignored):
+**~/.claude/projects/the-app/CLAUDE.md** (personal, in home directory):
 ```markdown
-# Local Settings
-- Database: postgresql://localhost/myapp_dev
+# MyApp Local Settings
+- Database: postgresql://localhost/the_app_dev
 - Test with --verbose flag
-- Deploy to staging before asking
+- Deploy to staging with approval
 ```
 
 ## Common Patterns
@@ -175,5 +197,11 @@ Review and update your CLAUDE.md files regularly:
 - Add new tools and commands
 - Update links
 - Refine based on what Claude asks repeatedly
+- Use the inline `#` directive to test new instructions before adding them permanently
+- Keep files concise - they become part of the prompt, so avoid overwhelming detail
 
-Think of CLAUDE.md as living documentation that evolves with your project.
+Think of CLAUDE.md files as living documentation that evolves with your project.
+
+## Command-Line Tools
+
+Claude Code has access to the shell environment that launched it, including all installed command-line tools like `git`, `curl`, `ls`, etc. For custom tools specific to your project, document them in your CLAUDE.md files so Claude understands how to use them (see "Document Custom Tools" section above).
