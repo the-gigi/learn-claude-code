@@ -40,13 +40,16 @@ Claude code has plugins/extensions for different IDEs. I'm a JetBrains die-hard 
 JetBrains IDEs (as well as many other IDEs) provide s built-in terminal. You just type 'claude' in such a built-in terminal window and hope for the best. But, `shift+return` may not work for you. You have a few options:
 
 - type `\+return` 
-- type `ctrl+g`
-- install the Claude Code plugin
+- type `ctrl+j`
+- install the Claude Code plugin and use `option+return`
 
-![](../images/claude-code-jetbrains-plugin.png)
+![](images/claude-code-jetbrains-plugin.png)
 
+Note that `option+return` don't work in RustRover even after installing the plugin. It seems to be buggy in general and complains that Claude code is not installed. ¯\_(ツ)_/¯.
 
-Note that `shift+return` doesn't work in RustRover even after installing the plugin ¯\_(ツ)_/¯.
+The plugin by default runs simply the command `claude` so it will ask you annoyingly for permissions. But, you can customize the command and add the `--dangerously-skip-permissions` flag.
+
+![](images/dangerously-skip-permissions.png)
 
 ## Resuming previous sessions
 
@@ -80,6 +83,18 @@ Claude code has many slash commands. Just type `/` and you'll see a list of comm
 See [Slash Commands](slash-commands.md) for details.
 
 ## Shortcuts
+
+Claude Code has several keyboard shortcuts that control how it works. Type `?` to see all of them 
+
+```
+  ! for bash mode       double tap esc to clear input      ctrl + _ to undo
+  / for commands        shift + tab to auto-accept edits   ctrl + z to suspend
+  @ for file paths      ctrl + o for verbose output        ctrl + v to paste images
+  & for background      ctrl + t to show todos             opt + p to switch model
+                        shift + ⏎ for newline              ctrl + s to stash prompt
+```
+
+Note that `shift + tab` cycles through the permissions modes, so `auto-accept edits` is displayed just because currently I'm in the `bypass permissions` mode. There is one more permission mode `plan`, in which Claude Code will discuss and plan, but will not make changes to your files.  
 
 ## Running shell commands
 
