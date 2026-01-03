@@ -13,9 +13,10 @@ Here is a lightweight study guide you can drop into a markdown file (e.g., `clau
 
 - [x] Read [Understanding Claude Code's Full Stack](https://alexop.dev/posts/understanding-claude-code-full-stack/) focusing on the conceptual differences between skills, commands, and subagents.
 - [x] Read [How I Use Every Claude Code Feature - by Shrivu Shankar](https://blog.sshh.io/p/how-i-use-every-claude-code-feature) and note 2–3 patterns you want to copy (e.g., a specific subagent role or reusable slash command).
-- [ ] Study [Subagents - Claude Code Docs](https://code.claude.com/docs/en/sub-agents) and configure at least one subagent in your lab repo (e.g., "Test Runner" or "Security Reviewer").
+- [x] Read [A Guide to Claude Code 2.0 and getting better at using coding agents](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents)
+- [x] Read [Slash Commands vs Subagents](https://jxnl.co/writing/2025/08/29/context-engineering-slash-commands-subagents/) and refactor at least one workflow into a slash command and one into a subagent, based on those guidelines.- [ ] Study [Subagents - Claude Code Docs](https://code.claude.com/docs/en/sub-agents) and configure at least one subagent in your lab repo (e.g., "Test Runner" or "Security Reviewer").
+- [ ] Check out [opscode](https://github.com/winfunc/opcode) - a Claude Code Desktop UI
 - [ ] Install or create at least one custom skill following [Claude Skills Tutorial](https://www.siddharthbharath.com/claude-skills/); document in `CLAUDE.md` when/how you want it used.
-- [ ] Read [Slash Commands vs Subagents](https://jxnl.co/writing/2025/08/29/context-engineering-slash-commands-subagents/) and refactor at least one workflow into a slash command and one into a subagent, based on those guidelines.
 - [ ] Explore [VoltAgent/awesome-claude-code-subagents - GitHub](https://github.com/VoltAgent/awesome-claude-code-subagents) and adapt one existing subagent idea to your lab repo.
 - [ ] Read the Reddit thread [When should I use a Skill, a Slash Command, or a Sub-Agent in ...](https://www.reddit.com/r/ClaudeAI/comments/1orozs4/when_should_i_use_a_skill_a_slash_command_or_a/) and add 2 "rules of thumb" you like into this guide.
 
@@ -73,3 +74,6 @@ Here is a lightweight study guide you can drop into a markdown file (e.g., `clau
 - [ ] Read [Headless mode - Claude Code Docs](https://code.claude.com/docs/en/headless) to understand automation and CI/CD integration use cases.
 - [ ] Experiment with combining hooks + plugins to create a personalized Claude Code startup sequence.
 
+## Reference
+
+- [ ] [RAG Stuff](https://jxnl.co/writing/2025/09/11/rag-series-index/)

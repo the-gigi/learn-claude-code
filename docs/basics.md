@@ -25,6 +25,29 @@ cl='claude --dangerously-skip-permissions'
 
 # Using Claude code
 
+## Using Claude Code in the terminal
+
+Claude Code is a super fancy CLI. It does a lot of magic with dynamic refreshing, status updates, syntax highlighting and whatnot. It needs to jump through some hoops to make it work. The [infamous flickering bug](https://github.com/anthropics/claude-code/issues/769#issuecomment-3667315590) is where you feel it the most as a user. Anthropic has been working on it for months. They made progress, but I still run into it from time to time as of January 2nd 2026 on version. 
+
+I use it with iTerm2 on Mac. The main thing to know is how to type multi-line text because just typing `<return / enter>` sends the current text to Claude. In iTerm2 you can type `shift + return` to start a new line.
+
+You may need to run the `/terminal-setup` slash command once to make it work.
+
+## Using Claude Code in IDEs
+
+Claude code has plugins/extensions for different IDEs. I'm a JetBrains die-hard (sorry VS Code and its progeny).I use mostly PyCharm, Goland and RustRover.
+
+JetBrains IDEs (as well as many other IDEs) provide s built-in terminal. You just type 'claude' in such a built-in terminal window and hope for the best. But, `shift+return` may not work for you. You have a few options:
+
+- type `\+return` 
+- type `ctrl+g`
+- install the Claude Code plugin
+
+![](../images/claude-code-jetbrains-plugin.png)
+
+
+Note that `shift+return` doesn't work in RustRover even after installing the plugin ¯\_(ツ)_/¯.
+
 ## Resuming previous sessions
 
 Claude keeps track of previous sessions. You can resume the very last session with:
@@ -33,7 +56,14 @@ Claude keeps track of previous sessions. You can resume the very last session wi
 cl --continue
 ```
 
-This is my primary resume mode. If you want to resume another previous session you can type:
+I have an alias 
+```shell
+alias clc='cl --continue'
+```
+
+This is my primary resume mode when something goes wrong at the terminal-level (flickering, hanging, etc) and I want to reset the terminal session and continue where I left, so I kill the terminal session with ctrl+C (or two) and then type `clc`.
+
+If you want to resume another previous session you can type:
 
 ```
 cl --resume
@@ -45,36 +75,25 @@ In both cases you will get a list of previous sessions to choose from.
 
 ## Slash commands
 
-Claude code has many slash commands. Just type `/` and you'll see a list of commands.
+Claude code has many slash commands. Just type `/` and you'll see a list of commands. The abovementioned `/terminal-setup` is one of them
 
 See [Slash Commands](slash-commands.md) for details.
 
-## Running shaell commands
+## Shortcuts
 
-You can quickly run shell commands with the `!` modifier. For example, `! pwd` will run the `pwd` command and insert the output into the conversation.
+## Running shell commands
 
-
-# The CLAUDE.md file
-
-This is where you give Claude code instructions for your project. You can have multiple CLAUDE.md files in a project. You can have a CLAUDE.md file in the root of your project, in subdirectories and in your home directory as `~/.cloud/CLAUDE.md` . If you have a personal CLAUDE.md file for a project that you don't want to commit to the repository, you can name it `CLAUDE.local.md` and ignored it in your .gitignore. Claude code will pick up both `CLAUDE.md` and `CLAUDE.local.md` files automatically at any level. You can also have a general CLAUDE.md file in your home directory that applies to all projects.
-
-Claude code combines all CLAUDE.md files in its current directory and parent directories up to the home directory and adds them automatically to the prompt. `CLOUDE.md` files in sub-directories are pulled into the contet when working with files in these subdirectories.
-
-## Command-line tools
-
-Claude code has access to the shell environment that launched it. This means it can run any command-line tool you have
-installed. It will be familiar with standard tools like `git`, `curl`, `ls`, etc. If you have custom tools installed,
-you may want to provide some documentation for them in the CLAUDE.md file.
- 
-## Fine-tuning your CLAUDE.md files
-
-It is a good idea to periodically review and refine your CLAUDE.md files to ensure they accurately reflect your current workflow and preferences. You can add new instructions on the fly with the inline `#` directive ro directly edit the CLAUDE.md files. 
-
-Since they become part of the prompt, you want to keep them concise and relevant. Avoid adding too much detail that may overwhelm the model.
+You can quickly run shell commands with the `!` modifier. For example, `! pwd` will run the `pwd` command and insert the
+output into the conversation.
 
 
+## Other Ways to Use Claude Code
 
+There are several other ways to use Claude code. I don't really use them at the moment:
 
-
-
+- [Claude Code on the Web](https://code.claude.com/docs/en/claude-code-on-the-web)
+- [Claude Code on Desktop](https://code.claude.com/docs/en/desktop)
+- [Claude Code in Slack](https://code.claude.com/docs/en/slack)
+- [Claude Code GithubActions](https://code.claude.com/docs/en/github-actions)
+- [Claude Code in Chrome](https://code.claude.com/docs/en/chrome)
 
