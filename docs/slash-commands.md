@@ -6,7 +6,7 @@ Claude code has a lot fo useful slash commands. You can also create your own sla
 
 Here some commands I have used at least once in alphabetical order. Note, that this is not a comprehensive list. You may
 find other commands useful, so explore on your own. Just type `/` and start scrolling down. Alternatively, check all the
-slash commands in the docs: todos
+slash commands in the docs: https://code.claude.com/docs/en/slash-commands
 
 ### clear
 
@@ -272,8 +272,10 @@ This is how it shows up in ~/.claude/settings.json
 ```
 
 But, I have a fancy shell prompt based on PowerLeve10k theme and custom emojis for special directories. So, I asked
-Claude to mimic it, and it created a complex shell script. The script extracts a lot of information like directory (with emoji replacement logic), Kubernetes
-cluster, Git status, AWS profile, Python virtualenv, time and the current model and eventually assembles a single status line:
+Claude to mimic it, and it created a complex shell script. The script extracts a lot of information like directory (with
+emoji replacement logic), Kubernetes
+cluster, Git status, AWS profile, Python virtualenv, time and the current model and eventually assembles a single status
+line:
 
 ```
 ❯ cat ~/.claude/statusline-command.sh
@@ -452,8 +454,47 @@ Here is what my Claude Code status line looks like:
 
 ![](images/statusline.png)
 
-There are many more slash commands that are relevant for other areas like agents, skills, hooks and plugins that we will mention in other sections. 
+There are many more slash commands that are relevant for other areas like agents, skills, hooks and plugins that we will
+mention in other sections.
 
 Alright, let's look at custom commands.
 
 ## Creating Custom Slash Commands
+
+Custom slash commands let you extend Claude Code with your own workflows. You should use them for tasks that
+require some intelligence. If you want to perform some fixed tasks like checking the average sentence length in a web
+page just write little program or script. No need to bother the LLM with such tasks. Note that you can ask Claude Code
+to write the program or script for you. 
+
+Custom slash commands go in ~/.claude/commands. Here is a command I just asked Claude Code to automatically comes up with a one-liner commit message and detect the project it's in and then commits the changes.
+
+```
+❯ cat ~/.claude/commands/gcm.md 
+```
+
+Construct a git commit message and run the commit command.
+
+## Instructions
+
+1. Run `git diff --cached --stat` to see staged changes. If nothing is staged, run `git diff --stat` to see unstaged changes and tell me to stage files first.
+
+2. Run `git diff --cached` (or `git diff` if nothing staged) to see the actual changes.
+
+3. Find the project prefix by looking at recent commits in the affected directories:
+   ```
+   git log --oneline -10 -- <affected-paths>
+   ```
+   Look for the `[project]` pattern in those commits. Use the most common prefix found.
+
+4. Generate a concise one-liner commit message:
+   - Start with lowercase after the `[project]` prefix
+   - Focus on the "what" and "why", not the "how"
+   - No issue numbers (those go in PR descriptions)
+   - Keep it under 72 characters total
+
+5. Run the commit command immediately:
+   ```
+   gcm "[<project>] <message>"
+   ```
+
+
