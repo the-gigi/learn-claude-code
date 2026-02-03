@@ -31,11 +31,15 @@ They were eagerly adopted by all other players in the AI agent arena.
 Skills live in .claude/skills directories. These can be at different levels:
 
 - Enterprise
-- User: `~/.claude/skills`
-- Project: `.claude/skills`
+- Personal: `~/.claude/skills`
 - Sub-directory: `foo/.claude/skills`
+- Project: `.claude/skills`
+- Plugin: `<plugin>/skills`
 
-If there are two skills with the same name, the more specific one wins (sub-directory > project > user > enterprise).
+Nested skills behave like nested CLAUDE.md files: the closer the skill is to the file you're working on, the more
+specific it is. If there are two skills with the same name, higher-priority locations win (enterprise > personal >
+sub-directory > project). Plugin skills use a `plugin-name:skill-name` namespace, so they don't conflict with other
+levels. If a skill and a command share the same name, the skill takes precedence.
 
 ## Creating your own skills
 
