@@ -5,7 +5,7 @@ Creates a new git worktree from a Linear issue, then opens it in iTerm2 with hor
 **Argument:** `<linear-issue> --repo <repo>`
 
 - `linear-issue`: Linear issue ID (e.g., `AI2-992`, `IN-2705`)
-- `--repo`: Target repo — `agi`, `infra`, or `inference-monorepo` (REQUIRED)
+- `--repo`: Target repo — `agi`, `infra`, `inference-monorepo`, `space`, or `gitops-k8s` (REQUIRED)
 
 ## Instructions
 

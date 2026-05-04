@@ -19,5 +19,6 @@ The script will:
 - Remove the git worktree
 - Delete the branch
 - Checkout main and pull latest with rebase
+- Close the matching cmux workspace if one is open (closes panes' surfaces first to avoid the hang that happens when `close-workspace` is invoked with live panes)
 
 Bails out if PR wasn't merged or doesn't exist.
