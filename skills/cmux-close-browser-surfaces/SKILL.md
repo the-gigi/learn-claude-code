@@ -1,6 +1,6 @@
 ---
-name: close-browser-surfaces
-description: Close all cmux browser surfaces in the current workspace (or a specific workspace, or every workspace in the current window). Use whenever the user asks to "close the browser surface(s)", "close the cmux browser tab(s)", or otherwise tidy up browser surfaces left behind by prior work. Terminal surfaces are never touched.
+name: cmux-close-browser-surfaces
+description: Close all cmux browser surfaces in the current workspace (or a specific workspace, or every workspace in the current window). Use whenever the user asks to "close the browser surface(s)", "close the cmux browser tab(s)", or otherwise tidy up cmux browser surfaces left behind by prior work. Terminal surfaces are never touched. cmux is a tmux-like multiplexer with terminal and browser surfaces; this skill is unrelated to web-browser tabs or OS-level browser windows.
 ---
 
 # Close cmux Browser Surfaces
