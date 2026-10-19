@@ -1,6 +1,6 @@
 # Create Worktree from Linear Issue
 
-Creates a new git worktree from a Linear issue, then opens it in iTerm2 with horizontal split panes.
+Creates a new git worktree from a Linear issue, then opens it in cmux: a Claude Code pane with a shell pane below it.
 
 **Argument:** `<linear-issue> --repo <repo>`
 
